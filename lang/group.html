@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{CurrentGroupePrestation.TitreGroupe}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{CustomTitle}} - {{CurrentGroupePrestation.TitreGroupe}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlOffers}}" />
+    <meta property="og:url" content="{{UrlOffers}}" />
+    <meta property="og:title" content="{{CurrentGroupePrestation.TitreGroupe}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{CustomTitle}} - {{CurrentGroupePrestation.TitreGroupe}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <section class="section-title-BG bg-img" style="background-image: url({{#Photos.0}}{{UrlMedias}}/crop-2000x800/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}});" alt="{{NamePhoto}}-group-bg">
+            <div class="opacity">
+                <div class="content-section">
+
+                    <div class="text-center section-title section-title-with-bar">
+                        <h1>{{CurrentGroupePrestation.TitreGroupe}}</h1>
+
+                        <div class="bar-title"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION PRESTAS/OFFRES -->
+        <section class="section">
+            <div class="content-section">
+
+                <div class="prestas-big-contain">
+                    {{#CurrentGroupePrestation.PrestasGroupe}}
+                    <a href="{{UrlPrestaTemplate}}" class="presta-contain bg-img" style="background-image: url({{#PhotosPresta.0}}{{UrlMedias}}/crop-1200x800/{{IdMedia}}/{{FileNamePhoto}}{{/PhotosPresta.0}}{{^PhotosPresta.0}}{{#Photos.2}}{{UrlMedias}}/crop-1200x800/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.2}}{{/PhotosPresta.0}}); ">
+                        <div class="opacity-2">
+
+                            <div class="infos-contain">
+                                <div class="price-and-title-infos-presta">
+                                    {{#MinPricePresta}}
+                                    <div class="saw-prices">
+                                        <span>{{ResourcesTemplate.PriceFrom}}</span>
+                                        <strong>{{MinPricePresta}}{{CurrencySymbol}}</strong>
+                                    </div>
+                                    {{/MinPricePresta}}
+
+                                    <h3>{{TitrePresta}}</h3>
+                                </div>
+
+                                <div class="infos-presta">
+                                    {{#DurationPresta}}
+                                    <div class="infos-base-line">
+                                        {{DurationResume}}
+                                    </div>
+                                    {{/DurationPresta}}
+
+                                    {{#AgeMinimum}}
+                                    <div class="infos-base-line">
+                                        {{ResourcesTemplate.AgeStartingFrom}}
+                                        {{AgeMinimum}}{{#AgeMaximum}} - {{AgeMaximum}}{{/AgeMaximum}}
+                                        {{ResourcesTemplate.AgeYears}}
+                                    </div>
+                                    {{/AgeMinimum}}
+
+                                    {{#Difficulty}}
+                                    <div class="infos-base-line">
+                                        {{ResourcesTemplate.Difficulty}} {{Difficulty}} / 5
+                                    </div>
+                                    {{/Difficulty}}
+
+                                    {{#IsAdultRequired}}
+                                    <div class="infos-base-line">
+                                        {{ResourcesTemplate.AdultAccompaniment}}
+                                        {{{ResourcesTemplate.Required}}}
+                                    </div>
+                                    {{/IsAdultRequired}}
+
+                                    <div class="infos-base-line">
+                                        {{ResourcesTemplate.Confirmation}}
+                                        {{#HasDelayedConfirmation}} {{ResourcesTemplate.DelayedFemale}} ({{DelayedConfirmationDays}} {{ResourcesTemplate.durationUnit_Day}} {{ResourcesTemplate.MaximumLower}})
+                                        {{/HasDelayedConfirmation}}
+                                        {{^HasDelayedConfirmation}}{{ResourcesTemplate.Immediate}}
+                                        {{/HasDelayedConfirmation}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="infos-presta-hover">
+                                {{#DescriptionPresta}}
+                                <div class="description-presta">{{{DescriptionPresta}}}</div>
+                                {{/DescriptionPresta}}
+                            </div>
+
+                        </div>
+                    </a>
+                    {{/CurrentGroupePrestation.PrestasGroupe}}
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+
+</html>

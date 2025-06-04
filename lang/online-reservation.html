@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.BookTitle}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{MetaDescriptionOnlineReservation}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlOnlineBooking}}" />
+    <meta property="og:url" content="{{UrlOnlineBooking}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.BookTitle}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{MetaDescriptionOnlineReservation}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+    {{#HasBookingActivated}}{{>ScriptCalendarClick}}{{/HasBookingActivated}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <section class="section-title-BG bg-img" style="background-image: url(https://static.elloha.com/webgen/img/online-reservation.jpg);" alt="{{NamePhoto}}-online-resa-bg">
+            <div class="opacity">
+                <div class="content-section">
+
+                    <div class="text-center section-title section-title-with-bar section-title-with-bar-in-resa">
+                        <div class="title-and-bar-without-widget">
+                            <h1>
+                                {{^IsRestaurant}}{{ResourcesTemplate.BookYourActivity}}{{/IsRestaurant}}
+                                {{#IsRestaurant}}{{ResourcesTemplate.BookYourTable}}{{/IsRestaurant}}
+                            </h1>
+
+                            <div class="bar-title"></div>
+                        </div>
+
+                        {{#HasBookingActivated}}
+                        <div id="section-BE" class="section-BE-home {{#isActivity}}be-home-activity{{/isActivity}}">
+                            <div class="check-availability">
+                                <div class="rounded-box">
+                                    {{>Widget-BE}}
+                                    {{>Widget-BE-secure}}
+                                </div>
+                            </div>
+                        </div>
+                        {{/HasBookingActivated}}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        {{#HasCalendarActivated}}
+        <!-- SECTION CALENDRIER -->
+        {{>Calendar}}
+        {{/HasCalendarActivated}}
+
+        {{#HasNewsletterActivated}}
+        <!-- SECTION NEWSLETTER -->
+        {{>Newsletter2}}
+        {{/HasNewsletterActivated}}
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

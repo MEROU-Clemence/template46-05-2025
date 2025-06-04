@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.NewsPageTitle}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{MetaDescriptionNews}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlNews}}" />
+    <meta property="og:url" content="{{UrlNews}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.NewsPageTitle}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{MetaDescriptionNews}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main class="news">
+        <!-- SECTION BANNER -->
+        <section class="section-title-BG bg-img" style="background-image: url(https://static.elloha.com/webgen/img/news.jpg);" alt="{{NamePhoto}}-news-bg">
+            <div class="opacity">
+                <div class="content-section">
+
+                    <div class="text-center section-title section-title-with-bar">
+                        <h1>{{ResourcesTemplate.NewsPageTitle}}</h1>
+
+                        <div class="bar-title"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION NEWS -->
+        <section class="section section-news-in-news">
+            <div class="content-section">
+
+                {{#NewsList}}
+                <div class="news-contain-in-news">
+                    <div class="date-news-in-news">
+                        <span>{{DateNewsString}}</span>
+                    </div>
+
+                    <div class="photo-and-descrip-news">
+                        {{#ListPhotoNews.0}}
+                        {{#ListPhotoNews.1}}
+                        <div class="owl-wrapper">
+                            <div class="owl-carousel owl-theme slider-page-news">
+                                {{#ListPhotoNews}}
+                                <div class="photo-page photo-page-in-slider">
+                                    <img src="{{UrlMedias}}/crop-800x500/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}-photo-news">
+                                </div>
+                                {{/ListPhotoNews}}
+                            </div>
+                        </div>
+                        {{/ListPhotoNews.1}}
+
+                        {{^ListPhotoNews.1}}
+                        {{#ListPhotoNews}}
+                        <div class="photo-page">
+                            <img src="{{UrlMedias}}/crop-800x500/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}-photo-news">
+                        </div>
+                        {{/ListPhotoNews}}
+                        {{/ListPhotoNews.1}}
+                        {{/ListPhotoNews.0}}
+
+                        {{^ListPhotoNews.0}}
+                        <div class="photo-page">
+                            <img src="https://static.elloha.com/webgen/img/news.jpg" alt="{{NamePhoto}}-photo-news">
+                        </div>
+                        {{/ListPhotoNews.0}}
+
+                        <div class="title-and-descrip-page">
+                            <h2>{{TitleNews}}</h2>
+
+                            <div class="description description-page">
+                                {{{TextNews}}}
+
+                                {{#UrlYoutube}}
+                                <div class="option-youtube"><iframe src="{{UrlYoutube}}" frameborder="0" allowfullscreen></iframe></div>
+                                {{/UrlYoutube}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/NewsList}}
+
+            </div>
+        </section>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>
